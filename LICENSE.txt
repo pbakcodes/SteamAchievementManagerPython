@@ -1,0 +1,52 @@
+Steam Achievement Manager — Python port
+========================================
+
+This project is a Python 3 port of gibbed's Steam Achievement Manager
+(https://github.com/gibbed/SteamAchievementManager), originally written in C#
+using Windows Forms. The Python port re-implements the same functionality on
+top of ctypes (for the Steam client DLL) and PySide6 (for the GUI).
+
+Per the terms of the original zlib license (reproduced in full below):
+
+  * This distribution is an ALTERED version of the original software. It is a
+    reimplementation in a different programming language and GUI toolkit; it
+    is NOT the original C# software written by Rick "gibbed".
+  * The original copyright notice below MUST NOT be removed or altered from
+    any source distribution.
+  * Neither the original author nor this port make any warranty; use at your
+    own risk.
+
+Copyright for the Python port
+-----------------------------
+
+Copyright (c) 2026 pbakcodes
+
+The port itself (translation of the C# code to Python, the PySide6 GUI code,
+and the packaging / build scripts) is released under the SAME zlib license as
+the original. See the notice below.
+
+
+================================================================================
+Original software notice (must be preserved — zlib license)
+================================================================================
+
+Copyright (c) 2024 Rick (rick 'at' gibbed 'dot' us)
+
+This software is provided 'as-is', without any express or implied
+warranty. In no event will the authors be held liable for any damages
+arising from the use of this software.
+
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it
+freely, subject to the following restrictions:
+
+1. The origin of this software must not be misrepresented; you must not
+   claim that you wrote the original software. If you use this software
+   in a product, an acknowledgment in the product documentation would
+   be appreciated but is not required.
+
+2. Altered source versions must be plainly marked as such, and must not
+   be misrepresented as being the original software.
+
+3. This notice may not be removed or altered from any source
+   distribution.

@@ -1,0 +1,15 @@
+[project]
+name = "sam-python"
+version = "7.0.0"
+description = "Python port of gibbed's Steam Achievement Manager."
+requires-python = ">=3.9"
+dependencies = [
+    "PySide6>=6.5",
+]
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["sam*"]
