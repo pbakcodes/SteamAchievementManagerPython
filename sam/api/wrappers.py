@@ -26,17 +26,10 @@ from ctypes import (
     c_uint32,
     c_uint64,
     c_void_p,
-    cast,
     sizeof,
 )
-from typing import Callable
 
-from . import steam
-from .types import (
-    CallHandle,
-    encode_cstring,
-    decode_cstring,
-)
+from .types import decode_cstring
 
 
 _PTR = sizeof(c_void_p)
@@ -171,15 +164,12 @@ class SteamUser012(_Wrapper):
         return bool(fn(self.address))
 
     def get_steam_id(self) -> int:
-        # CSteamID (64-bit) is returned by out-pointer in some builds and by
-        # value in others. The vtable slot's signature is
-        # ``void GetSteamID(this, CSteamID *out)``.
-        fn = CFUNCTYPE(None, c_void_p, POINTER(c_uint64))(
-            _vfn(self.address, self._GetSteamID)
-        )
-        out = c_uint64(0)
-        fn(self.address, ctypes.byref(out))
-        return int(out.value)
+        # ``CSteamID GetSteamID()`` returns an 8-byte, trivially-copyable value,
+        # so on both 64-bit ABIs (System V and Microsoft x64) it comes back in a
+        # register -- model it as ``uint64 GetSteamID(this)``. Passing an
+        # out-pointer instead yields 0 on both platforms.
+        fn = CFUNCTYPE(c_uint64, c_void_p)(_vfn(self.address, self._GetSteamID))
+        return int(fn(self.address))
 
 
 # ---------------------------------------------------------------------------

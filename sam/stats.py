@@ -5,7 +5,7 @@ Direct translation of the classes under ``SAM.Game.Stats``.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import datetime
 from enum import IntFlag
 from typing import Optional
